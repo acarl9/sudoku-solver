@@ -12,7 +12,6 @@ int main(int argc,char* argv[])
     std::vector<std::vector<int>> board;
     std::vector<int*[3][3]> grid;
     board = inputBoard();
-    std::cout << board.size() << std::endl;
     //grid = setupBoard(board);
     displayBoard(board);
     return 0;
@@ -70,9 +69,13 @@ void displayBoard(std::vector<std::vector<int>> board)
             if (c == 0)
                 c = '#';
             if (col != 0 && col % 3 == 0)
-                std::cout << " ";
-            std::cout << c;
+                std::cout << "| ";
+            std::cout << c << " ";
             if (col == 8)
-            std::cout << std::endl;
+            {
+                if (!((row+1) % 3))
+                    std::cout << std::endl;
+                std::cout << std::endl;
+            }
         }
 }
