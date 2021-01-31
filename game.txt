@@ -1,0 +1,15 @@
+// use # for empty spaces
+// fill in grid with numbers
+// any line starting with // will be ignored, so use it to make comments if you want
+//
+### ### ###
+### ### ###
+### ### ###
+//
+### ### ###
+### ### ###
+### ### ###
+//
+### ### ###
+### ### ###
+### ### ###
