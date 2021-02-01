@@ -85,6 +85,8 @@ void displayBoard(std::vector<std::vector<int>> board)
             char c = board[row][col];
             if (c == 0)
                 c = '#';
+            else
+                c = c + '0';
             if (col != 0 && col % 3 == 0)
                 std::cout << "| ";
             std::cout << c << " ";
