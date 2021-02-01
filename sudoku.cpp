@@ -3,20 +3,28 @@
 #include <iostream>
 #include <fstream>
 
+/*
+ * function headers
+ */
 std::vector<std::vector<int>> inputBoard();
-std::vector<int*[3][3]> setupBoard(std::vector<std::vector<int>> &board);
+std::vector<std::vector<std::vector<int*>>> setupBoard(std::vector<std::vector<int>> &board);
 void displayBoard(std::vector<std::vector<int>> board);
 
 int main(int argc,char* argv[])
 {
     std::vector<std::vector<int>> board;
-    std::vector<int*[3][3]> grid;
+    std::vector<std::vector<std::vector<int*>>> grid;
     board = inputBoard();
-    //grid = setupBoard(board);
+    grid = setupBoard(board);
     displayBoard(board);
     return 0;
 }
 
+/*
+ * inputs the board from game.txt file
+ * turns all #'s to 0's
+ * has a problem with empty lines
+ */
 std::vector<std::vector<int>> inputBoard()
 {
     std::ifstream file;
@@ -44,22 +52,31 @@ std::vector<std::vector<int>> inputBoard()
     return board;
 }
 
-/*std::vector<int*[3][3]> setupBoard(std::vector<std::vector<int>> &board)
+/*
+ * turns 9x9 vector grid into 9 3x3 grids with pointers to the original numbers
+ */
+std::vector<std::vector<std::vector<int*>>> setupBoard(std::vector<std::vector<int>> &board)
 {
-    std::vector<int*[3][3]> gridList;
+    std::vector<std::vector<std::vector<int*>>> gridList;
     for (int i = 0; i < 9; i++)
     {
-        int* grid[3][3];
+        std::vector<std::vector<int*>> grid;
         for (int row = 0; row < 3; row++)
             for (int col = 0; col < 3; col++)
             {
-                grid[row][col] = (&board[i/3 + row][i%3 + col]);
+                std::vector<int*> line;
+                line.push_back((&board[i/3 + row][i%3 + col]));
+                grid.push_back(line);
             }
         gridList.push_back(grid);
     }
     return gridList;
-}*/
+}
 
+/*
+ * displays the board through cout
+ * changes all 0's to # for clarity
+ */
 void displayBoard(std::vector<std::vector<int>> board)
 {
     for (int row = 0; row < 9; row++)
